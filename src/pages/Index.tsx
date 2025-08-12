@@ -4,7 +4,6 @@ import Programs from "@/components/Programs";
 import Contact from "@/components/Contact";
 
 const Index = () => {
-  console.log("Index page rendering");
   return (
     <div className="min-h-screen">
       <Hero />
