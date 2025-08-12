@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/daycare-hero.jpg";
 
 const Hero = () => {
+  console.log("Hero component rendering");
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
