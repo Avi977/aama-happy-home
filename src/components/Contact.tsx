@@ -7,7 +7,7 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Phone",
-      details: "(555) 123-4567",
+      details: "(510) 778-3220",
       action: "Call Us"
     },
     {
