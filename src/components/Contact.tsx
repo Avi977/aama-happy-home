@@ -19,7 +19,7 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Location",
-      details: "123 Sunshine Street, Happy Valley, CA 90210",
+      details: "737 Birdwood Ct, San Ramon, CA, 94582",
       action: "Get Directions"
     },
     {
