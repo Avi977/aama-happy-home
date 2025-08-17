@@ -13,7 +13,7 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email", 
-      details: "hello@aamadaycare.com",
+      details: "aamadaycare@gmail.com",
       action: "Send Email"
     },
     {
