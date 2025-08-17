@@ -5,7 +5,7 @@ const About = () => {
   const values = [
     {
       icon: Heart,
-      title: "Loving Care",
+      title: "Loving Care!",
       description: "Every child receives individual attention and affection in our nurturing environment"
     },
     {
