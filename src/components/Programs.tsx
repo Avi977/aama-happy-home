@@ -2,12 +2,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Clock, Users, Palette, BookOpen } from "lucide-react";
 import activitiesImage from "@/assets/activities.jpg";
+import { Link } from 'react-router-dom';
 
 const Programs = () => {
   const programs = [
     {
       title: "Toddler Care",
-      age: "18 months - 3 years",
+      age: "12 months - 3 years",
       description: "Gentle introduction to learning through play, social interaction, and creative activities",
       features: ["Potty training support", "Music and movement", "Sensory play", "Story time"],
       icon: Users
@@ -29,15 +30,11 @@ const Programs = () => {
   ];
 
   return (
-    <section className="py-20 bg-warm/20">
+    <section className="py-20 bg-warm/20" id="programs-section">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Our Programs
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Tailored programs designed to meet the unique developmental needs of each age group
-          </p>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Our Programs</h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">Tailored programs designed to meet the unique developmental needs of each age group</p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
@@ -56,13 +53,20 @@ const Programs = () => {
               Our curriculum combines structured learning with free play, allowing children to develop 
               naturally while building essential skills for their future educational journey.
             </p>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 mt-6">
               <Palette className="w-8 h-8 text-accent" />
               <span className="text-lg text-foreground">Creative Arts & Crafts</span>
             </div>
-            <Button variant="warm" size="lg" className="mt-6">
-              View Full Curriculum
-            </Button>
+            <Link to="/schedule#curriculum" className="w-full sm:w-auto inline-block mt-6 mb-2">
+              <Button variant="warm" size="lg" className="w-full sm:w-auto">View Full Curriculum</Button>
+            </Link>
+            <div className="flex items-center gap-4 mt-4">
+              <Clock className="w-8 h-8 text-accent" />
+              <span className="text-lg text-foreground">Daily Schedule</span>
+            </div>
+            <Link to="/schedule#schedule" className="inline-block mt-2 mb-2 w-full sm:w-auto">
+              <Button variant="warm" size="lg" className="w-full sm:w-auto">View Daily Schedule</Button>
+            </Link>
           </div>
         </div>
 
