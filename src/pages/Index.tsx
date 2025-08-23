@@ -6,13 +6,18 @@ import Header from "@/components/Header";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
-      <Header />
-      <Hero />
-      <About />
-      <Programs />
-      <Contact />
-    </div>
+    <>
+      <header>
+        <Header />
+      </header>
+      <main className="min-h-screen">
+        <Hero />
+        <About />
+        <Programs />
+        <Contact />
+      </main>
+      {/* Footer is added in index.html for global SEO NAP */}
+    </>
   );
 };
 

@@ -26,7 +26,7 @@ const About = () => {
   ];
 
   return (
-    <>
+    <main>
       <section className="py-20 bg-gradient-to-b from-background to-muted/30">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -42,7 +42,11 @@ const About = () => {
               <Card key={index} className="border-none shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                 <CardContent className="p-8 text-center">
                   <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
-                    <value.icon className="w-8 h-8 text-white" />
+                    {value.title === "Loving Care!" ? (
+                      <img src="/aama-logo.png" alt="Aama Daycare logo - Loving Care" className="w-12 h-12 object-contain" />
+                    ) : (
+                      <value.icon className="w-8 h-8 text-white" />
+                    )}
                   </div>
                   <h3 className="text-xl font-semibold text-foreground mb-4">{value.title}</h3>
                   <p className="text-muted-foreground leading-relaxed">{value.description}</p>
@@ -60,9 +64,17 @@ const About = () => {
             <blockquote className="text-lg text-muted-foreground italic">“Miss Rasu is compassionate and genuinely loves kids!”</blockquote>
             <blockquote className="text-lg text-muted-foreground italic">“The place is always clean and tidy. I never had any issues.”</blockquote>
           </div>
+          <a
+            href="https://www.yelp.com/biz/aama-day-care-san-ramon-2?osq=Aama+Daycare&override_cta=Get+pricing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block mt-6 px-6 py-2 bg-primary text-white rounded font-semibold hover:bg-primary/80 transition"
+          >
+            Read More Reviews
+          </a>
         </div>
       </section>
-    </>
+    </main>
   );
 };
 
