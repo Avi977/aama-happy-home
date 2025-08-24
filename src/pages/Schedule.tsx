@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const usHolidays = [
@@ -61,6 +61,19 @@ const Schedule = () => {
   const { weekday: todayShort, hour, minute } = getPacificTimeParts();
   const openNow = isOpenNowPT();
 
+  useEffect(() => {
+    // Check if there's a hash in the URL and scroll to that section
+    if (window.location.hash) {
+      const element = document.querySelector(window.location.hash);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // If no hash, scroll to top
+      window.scrollTo(0, 0);
+    }
+  }, []);
+
   return (
     <>
       <header>
@@ -69,12 +82,6 @@ const Schedule = () => {
       <main>
         <Hero />
         <div className="max-w-3xl mx-auto px-6">
-          <div className="bg-muted/30 rounded-xl p-8 mb-12 text-center">
-            <h2 className="text-3xl font-bold mb-2">Why Choose Aama Daycare?</h2>
-            <p className="text-lg text-muted-foreground mb-6">
-              At Aama Daycare, we believe every child deserves a foundation of love, learning, and growth. Our experienced team creates an environment where children thrive emotionally, socially, and intellectually.
-            </p>
-          </div>
           <section className="py-20">
             <h2 className="text-4xl font-bold mb-8 text-left">Location & Hours</h2>
             <div className="flex flex-col md:flex-row gap-8 items-start mb-12">
@@ -131,7 +138,7 @@ const Schedule = () => {
                 </table>
               </div>
             </div>
-            <h2 className="text-4xl font-bold mb-6 text-left" id="schedule">Childcare Daily Schedule</h2>
+            <h2 className="text-4xl font-bold mb-6 text-left" id="daily-schedule">Childcare Daily Schedule</h2>
             <p className="mb-8 text-lg text-muted-foreground">At Aama Daycare, we balance fun, learning, and rest so every child enjoys a happy and healthy day.</p>
             <div className="flex flex-col gap-6 mb-12">
               <div>
@@ -195,7 +202,7 @@ const Schedule = () => {
             </ul>
             <p className="mt-6 text-muted-foreground">If a holiday falls on a weekend, the daycare may be closed on the nearest weekday. Please contact us for any special schedule requests.</p>
             <div className="mt-16 mb-12 bg-muted/30 rounded-xl p-8">
-              <h2 className="text-4xl font-bold mb-2 text-left" id="curriculum">Our Curriculum</h2>
+              <h2 className="text-4xl font-bold mb-2 text-left" id="curriculum">Curriculum</h2>
               <p className="mb-4 text-lg text-muted-foreground">
                 We use the <span className="font-semibold text-primary">Mother Goose Time</span> curriculum, a research-backed, play-based program designed to nurture growth and learning in toddlers and preschoolers.
               </p>

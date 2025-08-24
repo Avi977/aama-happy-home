@@ -1,8 +1,8 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Clock, Users, Palette, BookOpen } from "lucide-react";
 import activitiesImage from "@/assets/activities.jpg";
 import { Link } from 'react-router-dom';
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Programs = () => {
   const programs = [
@@ -64,7 +64,7 @@ const Programs = () => {
               <Clock className="w-8 h-8 text-accent" />
               <span className="text-lg text-foreground">Daily Schedule</span>
             </div>
-            <Link to="/schedule#schedule" className="inline-block mt-2 mb-2 w-full sm:w-auto">
+            <Link to="/schedule#daily-schedule" className="inline-block mt-2 mb-2 w-full sm:w-auto">
               <Button variant="warm" size="lg" className="w-full sm:w-auto">View Daily Schedule</Button>
             </Link>
           </div>

@@ -131,7 +131,7 @@ const Contact = () => {
                       </Button>
                     </a>
                   ) : info.title === "Hours" ? (
-                    <Link to="/schedule" className="w-full block">
+                    <Link to="/schedule#daily-schedule" className="w-full block">
                       <Button variant="outline" size="sm" className="w-full">
                         {info.action}
                       </Button>
