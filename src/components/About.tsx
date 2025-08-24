@@ -1,5 +1,6 @@
 import { Heart, Shield, Star, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import YelpReviews from "./YelpReviews";
 
 const About = () => {
   const values = [
@@ -56,24 +57,8 @@ const About = () => {
           </div>
         </div>
       </section>
-      <section className="py-16 bg-white border-t border-muted">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h3 className="text-3xl font-bold text-foreground mb-8">What Parents Are Saying</h3>
-          <div className="space-y-8">
-            <blockquote className="text-lg text-muted-foreground italic">"A nurturing home environment but also provides structure and lessons which prepare toddlers for school."</blockquote>
-            <blockquote className="text-lg text-muted-foreground italic">"Miss Rasu is compassionate and genuinely loves kids!"</blockquote>
-            <blockquote className="text-lg text-muted-foreground italic">"The place is always clean and tidy. I never had any issues."</blockquote>
-          </div>
-          <a
-            href="https://www.yelp.com/biz/aama-day-care-san-ramon-2?osq=Aama+Daycare&override_cta=Get+pricing"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block mt-6 px-6 py-2 bg-primary text-white rounded font-semibold hover:bg-primary/80 transition"
-          >
-            Read More Reviews
-          </a>
-        </div>
-      </section>
+      
+      <YelpReviews />
     </main>
   );
 };
