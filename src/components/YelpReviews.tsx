@@ -44,8 +44,28 @@ const YelpReviews = () => {
         setLoading(true);
       }
       
-      // Mock data based on real Yelp reviews (replace with actual API calls)
-      const mockReviews: YelpReview[] = [
+      // Real API call to fetch Yelp reviews
+      const response = await fetch('/api/yelp-reviews');
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      
+      if (data.error) {
+        throw new Error(data.error);
+      }
+      
+      // Set the real reviews and business data
+      setReviews(data.reviews);
+      setBusiness(data.business);
+      setError(null);
+    } catch (err) {
+      console.error('Error fetching reviews:', err);
+      
+      // Fallback to mock data if API fails
+      const fallbackReviews: YelpReview[] = [
         {
           id: '1',
           url: 'https://www.yelp.com/biz/aama-day-care-san-ramon-2',
@@ -96,7 +116,7 @@ const YelpReviews = () => {
         }
       ];
 
-      const mockBusiness: YelpBusiness = {
+      const fallbackBusiness: YelpBusiness = {
         id: YELP_BUSINESS_ID,
         name: 'Aama Daycare',
         rating: 5.0,
@@ -104,14 +124,9 @@ const YelpReviews = () => {
         url: 'https://www.yelp.com/biz/aama-day-care-san-ramon-2'
       };
 
-      // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, isRefresh ? 500 : 1000));
-      
-      setReviews(mockReviews);
-      setBusiness(mockBusiness);
-      setError(null);
-    } catch (err) {
-      setError('Unable to load reviews at this time. Please visit our Yelp page for the latest reviews.');
+      setReviews(fallbackReviews);
+      setBusiness(fallbackBusiness);
+      setError('Using cached reviews. Real-time data temporarily unavailable.');
     } finally {
       setLoading(false);
       setRefreshing(false);
