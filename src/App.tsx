@@ -8,6 +8,7 @@ import NotFound from "./pages/NotFound";
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { AuthProvider } from './hooks/auth-context';
 import Schedule from './pages/Schedule';
+import AIChatbot from './components/AIChatbot';
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ const App = () => (
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
+            <AIChatbot />
           </BrowserRouter>
         </TooltipProvider>
       </QueryClientProvider>
