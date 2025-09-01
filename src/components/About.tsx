@@ -1,6 +1,7 @@
 import { Heart, Shield, Star, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import YelpReviews from "./YelpReviews";
+import PhotoCarousel from "./PhotoCarousel";
 
 const About = () => {
   const values = [
@@ -43,11 +44,7 @@ const About = () => {
               <Card key={index} className="border-none shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                 <CardContent className="p-8 text-center">
                   <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
-                    {value.title === "Loving Care!" ? (
-                      <img src="/aama-logo.png" alt="Aama Daycare logo - Loving Care" className="w-12 h-12 object-contain" />
-                    ) : (
-                      <value.icon className="w-8 h-8 text-white" />
-                    )}
+                    <value.icon className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="text-xl font-semibold text-foreground mb-4">{value.title}</h3>
                   <p className="text-muted-foreground leading-relaxed">{value.description}</p>
@@ -57,7 +54,7 @@ const About = () => {
           </div>
         </div>
       </section>
-      
+      <PhotoCarousel />
       <YelpReviews />
     </main>
   );
