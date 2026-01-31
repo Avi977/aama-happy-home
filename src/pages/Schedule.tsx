@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import ScheduleTimeline from '@/components/ScheduleTimeline';
 
 const usHolidays = [
   { date: 'January 1', name: "New Year's Day" },
@@ -140,60 +141,7 @@ const Schedule = () => {
             </div>
             <h2 className="text-4xl font-bold mb-6 text-left" id="daily-schedule">Childcare Daily Schedule</h2>
             <p className="mb-8 text-lg text-muted-foreground">At Aama Daycare, we balance fun, learning, and rest so every child enjoys a happy and healthy day.</p>
-            <div className="flex flex-col gap-6 mb-12">
-              <div>
-                <div className="font-bold text-primary text-lg">7:30 a.m. – Warm Welcome & Free Play</div>
-                <div className="text-base text-foreground">Children arrive, greet friends, and ease into the day with toys and activities.</div>
-              </div>
-              <div>
-                <div className="font-bold text-primary text-lg">8:30 a.m. – Healthy Breakfast & Clean Up</div>
-                <div className="text-base text-foreground">A nutritious breakfast fuels the day, followed by tidy-up time.</div>
-              </div>
-              <div>
-                <div className="font-bold text-primary text-lg">9:00 a.m. – Circle Time</div>
-                <div className="text-base text-foreground">Songs, stories, and group sharing to build community and language skills.</div>
-              </div>
-              <div>
-                <div className="font-bold text-primary text-lg">9:30 a.m. – Learning & Discovery</div>
-                <div className="text-base text-foreground">Hands-on activities focused on letters, numbers, colors, and shapes.</div>
-              </div>
-              <div>
-                <div className="font-bold text-primary text-lg">10:30 a.m. – Morning Snack</div>
-                <div className="text-base text-foreground">A light, healthy snack to recharge.</div>
-              </div>
-              <div>
-                <div className="font-bold text-primary text-lg">11:00 a.m. – Outdoor Play</div>
-                <div className="text-base text-foreground">Running, climbing, and group games to strengthen bodies and teamwork.</div>
-              </div>
-              <div>
-                <div className="font-bold text-primary text-lg">12:00 p.m. – Lunch & Clean Up</div>
-                <div className="text-base text-foreground">Wholesome meals to keep little ones energized.</div>
-              </div>
-              <div>
-                <div className="font-bold text-primary text-lg">1:00 p.m. – Nap & Quiet Time</div>
-                <div className="text-base text-foreground">Rest time for growing bodies and minds.</div>
-              </div>
-              <div>
-                <div className="font-bold text-primary text-lg">2:30 p.m. – Gentle Wake-Up & Quiet Play</div>
-                <div className="text-base text-foreground">Books, puzzles, and soft toys for a calm transition.</div>
-              </div>
-              <div>
-                <div className="font-bold text-primary text-lg">3:00 p.m. – Afternoon Snack</div>
-                <div className="text-base text-foreground">A healthy bite before afternoon activities.</div>
-              </div>
-              <div>
-                <div className="font-bold text-primary text-lg">3:30 p.m. – Outdoor Adventures</div>
-                <div className="text-base text-foreground">More playground time, fresh air, and active play.</div>
-              </div>
-              <div>
-                <div className="font-bold text-primary text-lg">4:30 p.m. – Creative & Sensory Play</div>
-                <div className="text-base text-foreground">Art, playdough, and painting to spark imagination.</div>
-              </div>
-              <div>
-                <div className="font-bold text-primary text-lg">6:00 p.m. – Pick-Up & Goodbye</div>
-                <div className="text-base text-foreground">Winding down the day, last pickups, and cheerful farewells.</div>
-              </div>
-            </div>
+            <ScheduleTimeline />
             <h3 className="text-2xl font-semibold mb-2 text-left">Holidays & Closures</h3>
             <ul className="list-disc list-inside space-y-1">
               {usHolidays.map((holiday, idx) => (

@@ -18,6 +18,10 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				serif: ['"PT Serif"', 'serif'],
+				sans: ['"PT Serif"', 'sans-serif'], // User asked to "Use Pt serif for the font", implying globally.
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',

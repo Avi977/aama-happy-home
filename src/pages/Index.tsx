@@ -1,9 +1,11 @@
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Programs from "@/components/Programs";
+import PhotoGallery from "@/components/PhotoGallery";
 import Contact from "@/components/Contact";
 import Header from "@/components/Header";
-import PhotoCarousel from "@/components/PhotoCarousel";
+import Footer from "@/components/Footer";
+
 
 const Index = () => {
   return (
@@ -15,6 +17,7 @@ const Index = () => {
         <Hero />
         <About />
         <Programs />
+        <PhotoGallery />
         <Contact />
       </main>
       {/* Footer is added in index.html for global SEO NAP */}
