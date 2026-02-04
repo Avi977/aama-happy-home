@@ -65,8 +65,6 @@ const PhotoCarousel: React.FC = () => {
     setCurrent(0);
   }, [chunkSize]);
 
-  if (total === 0) return <div>No photos available.</div>;
-
   const goTo = (idx: number, dir: 'left' | 'right') => {
     if (isSliding || idx === current) return;
     setPrevIndex(current);
@@ -83,8 +81,8 @@ const PhotoCarousel: React.FC = () => {
     }, SLIDE_DURATION);
   };
 
-  const prev = () => goTo((current === 0 ? total - 1 : current - 1), 'left');
-  const next = () => goTo((current === total - 1 ? 0 : current + 1), 'right');
+  const next = React.useCallback(() => goTo((current === slides.length - 1 ? 0 : current + 1), 'right'), [current, slides.length, isSliding]);
+  const prev = React.useCallback(() => goTo((current === 0 ? slides.length - 1 : current - 1), 'left'), [current, slides.length, isSliding]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -94,7 +92,7 @@ const PhotoCarousel: React.FC = () => {
     };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
-  });
+  }, [prev, next]);
 
   // Autoplay effect
   useEffect(() => {
@@ -105,7 +103,7 @@ const PhotoCarousel: React.FC = () => {
     return () => {
       if (autoplayRef.current) clearTimeout(autoplayRef.current);
     };
-  }, [current, isPaused, isSliding, chunkSize]);
+  }, [current, isPaused, isSliding, chunkSize, next]);
 
   // Cleanup on unmount
   useEffect(() => {
@@ -114,6 +112,8 @@ const PhotoCarousel: React.FC = () => {
       if (pauseTimeoutRef.current) clearTimeout(pauseTimeoutRef.current);
     };
   }, []);
+
+  if (total === 0) return <div>No photos available.</div>;
 
   return (
     <section className="py-8 md:py-12 bg-gradient-to-b from-white to-slate-50">
