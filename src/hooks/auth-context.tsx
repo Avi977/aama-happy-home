@@ -1,15 +1,22 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
+interface User {
+  name: string;
+  email?: string;
+  picture?: string;
+  [key: string]: unknown;
+}
+
 interface AuthContextType {
-  user: any;
-  setUser: (user: any) => void;
+  user: User | null;
+  setUser: (user: User | null) => void;
   logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUserState] = useState<any>(null);
+  const [user, setUserState] = useState<User | null>(null);
 
   // Load user from localStorage on mount
   useEffect(() => {
@@ -20,7 +27,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   // Update localStorage whenever user changes
-  const setUser = (user: any) => {
+  const setUser = (user: User | null) => {
     setUserState(user);
     if (user) {
       localStorage.setItem('authUser', JSON.stringify(user));

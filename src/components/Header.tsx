@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/hooks/auth-context';
-import { GoogleLogin } from '@react-oauth/google';
+import { GoogleLogin, CredentialResponse } from '@react-oauth/google';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, User as UserIcon } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -34,8 +34,9 @@ const Header = () => {
     { name: 'Contact', path: '/#contact-section' },
   ];
 
-  const handleGoogleSuccess = (credentialResponse: any) => {
-    const decoded = credentialResponse.credential ? JSON.parse(atob(credentialResponse.credential.split('.')[1])) : null;
+  const handleGoogleSuccess = (credentialResponse: CredentialResponse) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const decoded: any = credentialResponse.credential ? JSON.parse(atob(credentialResponse.credential.split('.')[1])) : null;
     setUser(decoded);
   };
 

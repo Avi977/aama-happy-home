@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { GoogleLogin } from '@react-oauth/google';
+import { GoogleLogin, CredentialResponse } from '@react-oauth/google';
 import { useAuth } from '@/hooks/auth-context';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -45,8 +45,9 @@ const Hero: React.FC<HeroProps> = ({ backToHomeButton }) => {
     }
   };
 
-  const handleGoogleSuccess = (credentialResponse: any) => {
-    const decoded = credentialResponse.credential ? JSON.parse(atob(credentialResponse.credential.split('.')[1])) : null;
+  const handleGoogleSuccess = (credentialResponse: CredentialResponse) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const decoded: any = credentialResponse.credential ? JSON.parse(atob(credentialResponse.credential.split('.')[1])) : null;
     setUser(decoded);
     setShowGoogleLogin(false);
   };
