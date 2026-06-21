@@ -85,9 +85,9 @@ const Pricing = () => {
               <h3 className="text-3xl font-black text-slate-900 leading-tight">{tier.title}</h3>
               <p className="text-slate-500 font-medium mb-6">{tier.age}</p>
 
-              <div className="flex items-end gap-1 mb-8">
-                <span className="text-5xl font-black text-slate-900">{tier.price}</span>
-                <span className="text-slate-500 font-medium mb-1">{tier.period}</span>
+              <div className="flex items-baseline gap-1 mb-8">
+                <span className="text-base font-bold text-slate-900">{tier.price}</span>
+                <span className="text-base text-slate-500 font-medium">{tier.period}</span>
               </div>
 
               <ul className="space-y-4 mb-8">
