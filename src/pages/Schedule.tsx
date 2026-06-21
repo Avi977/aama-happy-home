@@ -100,12 +100,12 @@ const Schedule = () => {
                 </div>
                 <div className="mb-2">
                   <span className="block font-bold text-primary text-lg">
-                    <a href="https://www.google.com/maps/dir/?api=1&destination=737+Birdwood+Ct,+San+Ramon,+CA,+94582" target="_blank" rel="noopener noreferrer" className="hover:underline">737 Birdwood Ct</a>
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=Aama+Day+Care+Center,+San+Ramon,+CA+94582" target="_blank" rel="noopener noreferrer" className="hover:underline">737 Birdwood Ct</a>
                   </span>
                   <span className="block text-muted-foreground">San Ramon, CA 94582</span>
                   <span className="block text-muted-foreground text-sm">Serving San Ramon Area</span>
                 </div>
-                <a href="https://www.google.com/maps/dir/?api=1&destination=737+Birdwood+Ct,+San+Ramon,+CA,+94582" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.google.com/maps/dir/?api=1&destination=Aama+Day+Care+Center,+San+Ramon,+CA+94582" target="_blank" rel="noopener noreferrer">
                   <button className="mt-2 px-6 py-2 border rounded text-lg font-semibold hover:bg-muted transition">Get directions</button>
                 </a>
               </div>
