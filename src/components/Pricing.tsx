@@ -2,22 +2,20 @@ import { Check, ShieldCheck, Clock, Utensils, Users, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-// TODO: Replace placeholder rates, license number, and subsidy details with the
-// owner's real numbers before publishing. Values marked $X / "TBD" are placeholders.
 const tiers = [
   {
     title: "Toddler Care",
     age: "12 mo - 3 yrs",
-    price: "$X",
-    period: "/mo",
+    price: "$300–$500",
+    period: "/wk",
     color: "from-pink-400 to-rose-400",
     highlights: ["Full-day care", "Potty training support", "Sensory play & story time"],
   },
   {
     title: "Preschool",
     age: "3 - 5 years",
-    price: "$X",
-    period: "/mo",
+    price: "$300–$500",
+    period: "/wk",
     color: "from-purple-400 to-indigo-400",
     featured: true,
     highlights: ["Kindergarten readiness", "Letter & number recognition", "Art, crafts & science"],
@@ -25,20 +23,20 @@ const tiers = [
   {
     title: "After School",
     age: "5 - 12 years",
-    price: "$X",
-    period: "/mo",
+    price: "$250–$400",
+    period: "/wk",
     color: "from-blue-400 to-cyan-400",
     highlights: ["Homework assistance", "Outdoor play", "Healthy snacks included"],
   },
 ];
 
 const differentiators = [
-  { icon: ShieldCheck, label: "State-licensed", detail: "License #TBD" },
-  { icon: Users, label: "Low child-to-adult ratios", detail: "More one-on-one care" },
-  { icon: Clock, label: "Open Mon–Fri", detail: "8:00 AM – 5:00 PM" },
-  { icon: Utensils, label: "Meals & snacks included", detail: "Healthy, home-cooked" },
-  { icon: Star, label: "5.0 rating on Yelp", detail: "Loved by local families" },
-  { icon: Check, label: "Subsidies accepted", detail: "Financial assistance welcome" },
+  { icon: ShieldCheck, label: "State-licensed" },
+  { icon: Users, label: "Low child-to-adult ratios" },
+  { icon: Clock, label: "Open Mon–Fri" },
+  { icon: Utensils, label: "Meals & snacks included" },
+  { icon: Star, label: "5.0 rating on Yelp" },
+  { icon: Check, label: "Subsidies accepted" },
 ];
 
 const Pricing = () => {
@@ -123,15 +121,12 @@ const Pricing = () => {
           <h3 className="text-4xl md:text-5xl font-black text-slate-900">Why Aama?</h3>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {differentiators.map(({ icon: Icon, label, detail }) => (
-            <div key={label} className="flex items-start gap-4 bg-white p-6 rounded-3xl shadow-md">
+          {differentiators.map(({ icon: Icon, label }) => (
+            <div key={label} className="flex items-center gap-4 bg-white p-6 rounded-3xl shadow-md">
               <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shrink-0">
                 <Icon className="w-6 h-6 text-white" />
               </div>
-              <div>
-                <p className="text-lg font-bold text-slate-900">{label}</p>
-                <p className="text-slate-500">{detail}</p>
-              </div>
+              <p className="text-lg font-bold text-slate-900">{label}</p>
             </div>
           ))}
         </div>
