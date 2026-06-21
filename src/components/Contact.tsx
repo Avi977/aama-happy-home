@@ -70,7 +70,7 @@ const Contact = () => {
                       <Phone className="w-6 h-6" />
                     </div>
                     <h3 className="font-bold text-lg mb-2">Call Us</h3>
-                    <p className="text-slate-500 mb-4 text-sm">Mon-Fri from 8am to 5pm</p>
+                    <p className="text-slate-500 mb-4 text-sm">Mon-Fri from 7:30am to 6pm</p>
                     <a href="tel:5107783220" className="w-full">
                       <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold">Call Now</Button>
                     </a>
