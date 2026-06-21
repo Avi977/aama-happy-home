@@ -1,5 +1,4 @@
 import Header from "@/components/Header";
-import Hero from "@/components/Hero";
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ScheduleTimeline from '@/components/ScheduleTimeline';
@@ -80,8 +79,7 @@ const Schedule = () => {
       <header>
         <Header />
       </header>
-      <main>
-        <Hero />
+      <main className="pt-24">
         <div className="max-w-3xl mx-auto px-6">
           <section className="py-20">
             <h2 className="text-4xl font-bold mb-8 text-left">Location & Hours</h2>
@@ -91,7 +89,7 @@ const Schedule = () => {
                 <div className="rounded-lg overflow-hidden mb-4 shadow">
                   <iframe
                     title="Aama Daycare Location"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3167.964964073839!2d-121.9451546846926!3d37.76437097975937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fd7e2e2e2e2e2%3A0x1234567890abcdef!2s737%20Birdwood%20Ct%2C%20San%20Ramon%2C%20CA%2094582!5e0!3m2!1sen!2sus!4v1710000000000!5m2!1sen!2sus"
+                    src="https://maps.google.com/maps?q=737%20Birdwood%20Ct%2C%20San%20Ramon%2C%20CA%2094582&z=15&output=embed"
                     width="100%"
                     height="200"
                     style={{ border: 0 }}

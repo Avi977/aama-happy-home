@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/hooks/auth-context';
 import { GoogleLogin, CredentialResponse } from '@react-oauth/google';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Phone, User as UserIcon } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 const Header = () => {
   const { user, setUser, logout } = useAuth();
   const location = useLocation();
+  const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showLoginDialog, setShowLoginDialog] = useState(false);
@@ -31,6 +32,7 @@ const Header = () => {
     { name: 'Home', path: '/' },
     { name: 'About', path: '/#about-section' }, // Using hash anchors for flexibility
     { name: 'Programs', path: '/#programs-section' },
+    { name: 'Schedule', path: '/schedule' },
     { name: 'Contact', path: '/#contact-section' },
   ];
 
@@ -41,17 +43,36 @@ const Header = () => {
   };
 
   const scrollToSection = (path: string) => {
-    if (path === '/') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else if (path.includes('#')) {
-      const id = path.split('#')[1];
+    const hashIndex = path.indexOf('#');
+    const route = (hashIndex >= 0 ? path.slice(0, hashIndex) : path) || '/';
+    const id = hashIndex >= 0 ? path.slice(hashIndex + 1) : '';
+
+    const scrollToTarget = () => {
+      if (!id) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return true;
+      }
       const element = document.getElementById(id);
       if (element) {
         const offset = 80; // Account for fixed header
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - offset;
+        const offsetPosition = element.getBoundingClientRect().top + window.pageYOffset - offset;
         window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        return true;
       }
+      return false;
+    };
+
+    if (location.pathname === route) {
+      // Already on the target page — just scroll.
+      scrollToTarget();
+    } else {
+      // Different page — navigate first, then poll until the target section
+      // has rendered (the home page is heavy; a fixed delay can be too short).
+      navigate(route);
+      let tries = 0;
+      const timer = setInterval(() => {
+        if (scrollToTarget() || ++tries > 25) clearInterval(timer);
+      }, 80);
     }
   };
 
