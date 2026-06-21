@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://avi977.github.io/aama-happy-home",
+  "homepage": "https://aamadaycare.com",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
