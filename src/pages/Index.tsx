@@ -6,9 +6,17 @@ import PhotoGallery from "@/components/PhotoGallery";
 import Contact from "@/components/Contact";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { usePageMeta } from "@/hooks/use-page-meta";
 
 
 const Index = () => {
+  usePageMeta({
+    title: "Daycare in San Ramon | Aama Daycare - Safe, Loving Childcare Near You",
+    description:
+      "Aama Daycare is a state-licensed daycare in San Ramon, CA, offering safe, reliable, and loving childcare for infants, toddlers, and preschoolers. Serving San Ramon, Dublin, Danville, and Pleasanton.",
+    path: "/",
+  });
+
   return (
     <>
       <header>

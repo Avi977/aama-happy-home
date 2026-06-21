@@ -55,7 +55,7 @@ const PhotoGallery = () => {
                                     <div className="relative aspect-[3/4] overflow-hidden rounded-3xl shadow-lg border-4 border-white group">
                                         <img
                                             src={url}
-                                            alt={`Daycare moment ${idx + 1}`}
+                                            alt={`Children at Aama Daycare in San Ramon — photo ${idx + 1}`}
                                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                             loading="lazy"
                                         />

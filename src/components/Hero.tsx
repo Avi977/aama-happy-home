@@ -94,8 +94,11 @@ const Hero: React.FC<HeroProps> = ({ backToHomeButton }) => {
             </span>
           </h1>
 
-          <p className="text-xl md:text-3xl mb-10 leading-relaxed max-w-2xl font-medium text-slate-600/90">
-            Where little dreams grow big in a safe, loving, and vibrant environment.
+          <p className="text-xl md:text-3xl mb-4 leading-relaxed max-w-2xl font-medium text-slate-600/90">
+            A safe, loving daycare in San Ramon, CA — where little dreams grow big.
+          </p>
+          <p className="text-base md:text-lg mb-10 leading-relaxed max-w-2xl text-slate-500">
+            Infant, toddler, preschool &amp; after-school care — proudly serving San Ramon, Dublin, Danville &amp; Pleasanton.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center md:justify-start items-center">
