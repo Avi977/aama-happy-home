@@ -1,5 +1,4 @@
 import Header from "@/components/Header";
-import Hero from "@/components/Hero";
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ScheduleTimeline from '@/components/ScheduleTimeline';
@@ -80,8 +79,7 @@ const Schedule = () => {
       <header>
         <Header />
       </header>
-      <main>
-        <Hero />
+      <main className="pt-24">
         <div className="max-w-3xl mx-auto px-6">
           <section className="py-20">
             <h2 className="text-4xl font-bold mb-8 text-left">Location & Hours</h2>
