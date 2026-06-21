@@ -99,6 +99,17 @@ const Contact = () => {
                       Visit Us
                     </h3>
                     <p className="text-slate-600 mb-4">737 Birdwood Ct, San Ramon, CA 94582</p>
+                    <a
+                      href="https://www.google.com/maps/dir/?api=1&destination=Aama+Day+Care+Center,+San+Ramon,+CA+94582"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block mb-4"
+                    >
+                      <Button variant="outline" className="gap-2 font-bold border-primary text-primary hover:bg-primary/5">
+                        <MapPin className="w-4 h-4" />
+                        Get Directions
+                      </Button>
+                    </a>
                   </div>
                   <div className="h-64 w-full bg-slate-100">
                     <iframe
