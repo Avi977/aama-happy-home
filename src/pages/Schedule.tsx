@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ScheduleTimeline from '@/components/ScheduleTimeline';
+import { usePageMeta } from '@/hooks/use-page-meta';
 
 const usHolidays = [
   { date: 'January 1', name: "New Year's Day" },
@@ -60,6 +61,13 @@ const weekdayOrder = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const Schedule = () => {
   const { weekday: todayShort, hour, minute } = getPacificTimeParts();
   const openNow = isOpenNowPT();
+
+  usePageMeta({
+    title: "Daily Schedule, Hours & Curriculum | Aama Daycare San Ramon",
+    description:
+      "See Aama Daycare's daily schedule, opening hours, location, holiday closures, and our play-based Mother Goose Time curriculum for toddlers and preschoolers in San Ramon, CA.",
+    path: "/schedule",
+  });
 
   useEffect(() => {
     // Check if there's a hash in the URL and scroll to that section
