@@ -47,26 +47,32 @@ const Header = () => {
     const route = (hashIndex >= 0 ? path.slice(0, hashIndex) : path) || '/';
     const id = hashIndex >= 0 ? path.slice(hashIndex + 1) : '';
 
-    const doScroll = () => {
-      if (id) {
-        const element = document.getElementById(id);
-        if (element) {
-          const offset = 80; // Account for fixed header
-          const offsetPosition = element.getBoundingClientRect().top + window.pageYOffset - offset;
-          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-        }
-      } else {
+    const scrollToTarget = () => {
+      if (!id) {
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        return true;
       }
+      const element = document.getElementById(id);
+      if (element) {
+        const offset = 80; // Account for fixed header
+        const offsetPosition = element.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        return true;
+      }
+      return false;
     };
 
     if (location.pathname === route) {
       // Already on the target page — just scroll.
-      doScroll();
+      scrollToTarget();
     } else {
-      // Different page — navigate first, then scroll once it has rendered.
+      // Different page — navigate first, then poll until the target section
+      // has rendered (the home page is heavy; a fixed delay can be too short).
       navigate(route);
-      setTimeout(doScroll, 120);
+      let tries = 0;
+      const timer = setInterval(() => {
+        if (scrollToTarget() || ++tries > 25) clearInterval(timer);
+      }, 80);
     }
   };
 
