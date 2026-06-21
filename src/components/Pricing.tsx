@@ -2,8 +2,6 @@ import { Check, ShieldCheck, Clock, Utensils, Users, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-// TODO: Replace placeholder rates, license number, and subsidy details with the
-// owner's real numbers before publishing. Values marked $X / "TBD" are placeholders.
 const tiers = [
   {
     title: "Toddler Care",
