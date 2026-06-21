@@ -3,9 +3,9 @@ import activitiesImage from "@/assets/activities.jpg"; // Keep existing image or
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import toddlerImg from "@/assets/photos/toddler.jpg";
-import preschoolImg from "@/assets/photos/preschool.jpg";
-import afterschoolImg from "@/assets/photos/afterschool.jpg";
+import toddlerImg from "@/assets/photos/img_4102.jpg";
+import preschoolImg from "@/assets/photos/img_4103.jpg";
+import afterschoolImg from "@/assets/photos/img_4104.jpg";
 
 const Programs = () => {
   const programs = [

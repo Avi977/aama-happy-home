@@ -24,6 +24,10 @@ export default defineConfig(({ mode }) => ({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
+    // Down-level modern syntax (optional chaining `?.`, nullish `??`) so the
+    // older Chromium bundled with react-snap's puppeteer can parse the bundle
+    // during prerendering. es2019 is supported by all current browsers too.
+    target: 'es2019',
     rollupOptions: {
       output: {
         manualChunks: undefined,
