@@ -249,10 +249,10 @@ const AIChatbot = () => {
         response = "Great choice! You can book a tour by calling us at (510) 778-3220 or using the 'Book a Tour' button on our website. Tours typically last 30-45 minutes and give you a complete view of our facility.";
         break;
       case "directions":
-        window.open("https://www.google.com/maps/dir/?api=1&destination=737+Birdwood+Ct,+San+Ramon,+CA,+94582", "_blank");
+        window.open("https://www.google.com/maps/dir/?api=1&destination=Aama+Day+Care+Center,+San+Ramon,+CA+94582", "_blank");
         return;
       case "show_map":
-        window.open("https://www.google.com/maps/place/737+Birdwood+Ct,+San+Ramon,+CA+94582", "_blank");
+        window.open("https://www.google.com/maps/search/?api=1&query=Aama+Day+Care+Center,+San+Ramon,+CA+94582", "_blank");
         return;
       default:
         response = "I'd be happy to help with that! Could you please rephrase your question or call us at (510) 778-3220 for immediate assistance.";
