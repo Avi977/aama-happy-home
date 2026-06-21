@@ -68,7 +68,7 @@ const AIChatbot = () => {
     }
     
     // Programs and Age Groups
-    if (message.includes('program') || message.includes('age') || message.includes('toddler') || message.includes('preschool') || message.includes('care')) {
+    if (message.includes('program') || message.includes('age') || message.includes('toddler') || message.includes('preschool') || /\bcare\b/.test(message)) {
       return {
         text: "We offer three main programs: Toddler Care (12 months - 3 years), Preschool Program (3-5 years), and After School Care (5-12 years). Each program is tailored to the developmental needs of that age group with age-appropriate activities and learning goals.",
         quickReplies: [
@@ -92,7 +92,7 @@ const AIChatbot = () => {
     }
     
     // Location and Address
-    if (message.includes('location') || message.includes('address') || message.includes('where') || message.includes('directions') || message.includes('san ramon')) {
+    if (message.includes('location') || message.includes('address') || message.includes('where') || message.includes('direction') || message.includes('map') || message.includes('san ramon')) {
       return {
         text: "We're located at 737 Birdwood Ct, San Ramon, CA 94582. We serve the San Ramon area and are easily accessible from major roads. Our facility is in a safe, residential neighborhood perfect for families.",
         quickReplies: [

@@ -1,6 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { GoogleLogin, CredentialResponse } from '@react-oauth/google';
-import { useAuth } from '@/hooks/auth-context';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from "@/lib/utils";
@@ -21,8 +19,6 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ backToHomeButton }) => {
-  const { user, setUser } = useAuth();
-  const [showGoogleLogin, setShowGoogleLogin] = useState(false);
   const [row1Photos, setRow1Photos] = useState<string[]>([]);
   const [row2Photos, setRow2Photos] = useState<string[]>([]);
 
@@ -36,20 +32,10 @@ const Hero: React.FC<HeroProps> = ({ backToHomeButton }) => {
   }, []);
 
   const handleScheduleClick = () => {
-    if (!user) {
-      setShowGoogleLogin(true);
-    } else {
-      const phone = '5107783220';
-      const text = encodeURIComponent('I am interested to visit and see your place for enrollment');
-      window.location.href = `sms:${phone}?&body=${text}`;
+    const contactSection = document.getElementById('contact-section');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-  };
-
-  const handleGoogleSuccess = (credentialResponse: CredentialResponse) => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const decoded: any = credentialResponse.credential ? JSON.parse(atob(credentialResponse.credential.split('.')[1])) : null;
-    setUser(decoded);
-    setShowGoogleLogin(false);
   };
 
   const handleLearnMoreClick = () => {
@@ -208,27 +194,6 @@ const Hero: React.FC<HeroProps> = ({ backToHomeButton }) => {
           </a>
         </div>
 
-        {/* Show GoogleLogin button if needed */}
-        {showGoogleLogin && !user && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-6">
-            <div className="p-8 bg-white rounded-[2rem] shadow-2xl relative">
-              <button
-                onClick={() => setShowGoogleLogin(false)}
-                className="absolute top-4 right-4 text-slate-400 hover:text-slate-600"
-              >
-                ✕
-              </button>
-              <h3 className="text-2xl font-bold mb-6 text-center">Login to Schedule</h3>
-              <GoogleLogin
-                onSuccess={handleGoogleSuccess}
-                onError={() => alert('Login Failed')}
-                useOneTap={false}
-                shape="pill"
-                size="large"
-              />
-            </div>
-          </div>
-        )}
       </div>
 
       <style>{`
