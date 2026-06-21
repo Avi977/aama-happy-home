@@ -49,10 +49,10 @@ function getPacificTimeParts() {
 
 function isOpenNowPT() {
   const { weekday, hour, minute } = getPacificTimeParts();
-  // Open Mon-Fri 7:30-18:00 PT
+  // Open Mon-Fri 07:30-18:00 PT
   if (["Sat", "Sun"].includes(weekday)) return false;
   if (hour < 7 || (hour === 7 && minute < 30)) return false;
-  if (hour > 18 || (hour === 18 && minute > 0)) return false;
+  if (hour >= 18) return false;
   return true;
 }
 
