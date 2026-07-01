@@ -28,7 +28,7 @@ const Index = () => {
         <Programs />
         <Pricing />
         <PhotoGallery />
-        <Contact />
+<Contact />
       </main>
       {/* Footer is added in index.html for global SEO NAP */}
     </>

@@ -3,11 +3,29 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { MapPin, Phone, Mail, Clock, Calendar, Send } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
 import { useAuth } from "@/hooks/auth-context";
 import { GoogleLogin } from '@react-oauth/google';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+
+const CONTACT_EMAIL = 'aamadaycare@gmail.com';
+const DEFAULT_INQUIRY_SUBJECT = 'Daycare Enrollment Inquiry';
+const DEFAULT_INQUIRY_BODY = `Hello,
+
+I am interested in enrolling my child in your daycare and would like more information.
+
+Child's Age: 
+Desired Start Date: 
+Full-Time or Part-Time: 
+Days Needed: Monday to Friday
+
+Please let me know if you have availability and provide information about tuition, your daily schedule, and the enrollment process.
+
+Thank you! I look forward to hearing from you.`;
+
+const defaultInquiryMailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(DEFAULT_INQUIRY_SUBJECT)}&body=${encodeURIComponent(DEFAULT_INQUIRY_BODY)}`;
+const defaultInquirySms = `sms:5107783220?body=${encodeURIComponent(DEFAULT_INQUIRY_BODY)}`;
 
 const Contact = () => {
   const { user, setUser, logout } = useAuth();
@@ -36,7 +54,7 @@ const Contact = () => {
       `Child's Age: ${formData.childAge}\n\n` +
       `Message:\n${formData.message}`
     );
-    window.location.href = `mailto:aamadaycare@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
   };
 
   const handleGoogleSuccess = (credentialResponse: { credential?: string }) => {
@@ -69,11 +87,16 @@ const Contact = () => {
                     <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mb-4">
                       <Phone className="w-6 h-6" />
                     </div>
-                    <h3 className="font-bold text-lg mb-2">Call Us</h3>
+                    <h3 className="font-bold text-lg mb-2">Call or Text</h3>
                     <p className="text-slate-500 mb-4 text-sm">Mon-Fri from 7:30am to 6pm</p>
-                    <a href="tel:5107783220" className="w-full">
-                      <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold">Call Now</Button>
-                    </a>
+                    <div className="flex flex-col gap-2 w-full">
+                      <a href="tel:5107783220" className="w-full">
+                        <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold">Call Now</Button>
+                      </a>
+                      <a href={defaultInquirySms} className="w-full">
+                        <Button variant="outline" className="w-full border-blue-600 text-blue-600 hover:bg-blue-50 font-bold">Text Us</Button>
+                      </a>
+                    </div>
                   </CardContent>
                 </Card>
 
@@ -84,7 +107,7 @@ const Contact = () => {
                     </div>
                     <h3 className="font-bold text-lg mb-2">Email Us</h3>
                     <p className="text-slate-500 mb-4 text-sm">We'll respond within 24h</p>
-                    <a href="mailto:aamadaycare@gmail.com" className="w-full">
+                    <a href={defaultInquiryMailto} className="w-full">
                       <Button variant="outline" className="w-full border-green-600 text-green-600 hover:bg-green-50 font-bold">Email Me</Button>
                     </a>
                   </CardContent>
@@ -187,13 +210,6 @@ const Contact = () => {
                 </Button>
               </form>
 
-              <div className="mt-8 pt-6 border-t border-slate-100 text-center">
-                <p className="text-sm text-slate-500 mb-4">Or schedule a meeting directly:</p>
-                <Button variant="outline" className="gap-2 border-slate-200 hover:bg-slate-50">
-                  <Calendar className="w-4 h-4" />
-                  Schedule a Meeting
-                </Button>
-              </div>
             </div>
           </div>
         </div>
