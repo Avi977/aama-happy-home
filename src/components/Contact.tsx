@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { MapPin, Phone, Mail, Clock, Calendar, Send } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
 import { useAuth } from "@/hooks/auth-context";
 import { GoogleLogin } from '@react-oauth/google';
 import React, { useState } from 'react';
@@ -69,11 +69,16 @@ const Contact = () => {
                     <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mb-4">
                       <Phone className="w-6 h-6" />
                     </div>
-                    <h3 className="font-bold text-lg mb-2">Call Us</h3>
+                    <h3 className="font-bold text-lg mb-2">Call or Text</h3>
                     <p className="text-slate-500 mb-4 text-sm">Mon-Fri from 7:30am to 6pm</p>
-                    <a href="tel:5107783220" className="w-full">
-                      <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold">Call Now</Button>
-                    </a>
+                    <div className="flex flex-col gap-2 w-full">
+                      <a href="tel:5107783220" className="w-full">
+                        <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold">Call Now</Button>
+                      </a>
+                      <a href={`sms:5107783220?body=${encodeURIComponent("Hello,\n\nI am interested in enrolling my child in your daycare and would like more information.\n\nChild's Age: \nDesired Start Date: \nFull-Time or Part-Time: \nDays Needed: \n\nPlease let me know if you have availability and provide information about tuition, your daily schedule, and the enrollment process.\n\nThank you! I look forward to hearing from you.")}`} className="w-full">
+                        <Button variant="outline" className="w-full border-blue-600 text-blue-600 hover:bg-blue-50 font-bold">Text Us</Button>
+                      </a>
+                    </div>
                   </CardContent>
                 </Card>
 
@@ -187,13 +192,6 @@ const Contact = () => {
                 </Button>
               </form>
 
-              <div className="mt-8 pt-6 border-t border-slate-100 text-center">
-                <p className="text-sm text-slate-500 mb-4">Or schedule a meeting directly:</p>
-                <Button variant="outline" className="gap-2 border-slate-200 hover:bg-slate-50">
-                  <Calendar className="w-4 h-4" />
-                  Schedule a Meeting
-                </Button>
-              </div>
             </div>
           </div>
         </div>
