@@ -34,6 +34,22 @@
 
     <link rel="icon" type="image/png" href="/fabicon-aama.png" />
 
+    <!-- Google tag (gtag.js) — %VITE_GA_MEASUREMENT_ID% replaced at build time -->
+    <script>
+      (function () {
+        var id = '%VITE_GA_MEASUREMENT_ID%';
+        if (!id || id.indexOf('G-') !== 0) return;
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { window.dataLayer.push(arguments); };
+        window.gtag('js', new Date());
+        window.gtag('config', id, { send_page_view: false });
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+        document.head.appendChild(script);
+      })();
+    </script>
+
     <script type="text/javascript">
       // Single Page Apps for GitHub Pages
       (function(l) {
