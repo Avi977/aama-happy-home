@@ -8,6 +8,7 @@ import { useAuth } from "@/hooks/auth-context";
 import { GoogleLogin } from '@react-oauth/google';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { CONTACT_EMAIL, defaultInquiryMailto, directionsUrl } from '@/lib/contact';
 
 const CONTACT_EMAIL = 'aamadaycare@gmail.com';
 const DEFAULT_INQUIRY_SUBJECT = 'Daycare Enrollment Inquiry';
@@ -78,9 +79,9 @@ const Contact = () => {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="grid lg:grid-cols-2 gap-12 lg:items-stretch">
             {/* Left: Contact Details & Map */}
-            <div className="space-y-8">
+            <div className="flex flex-col gap-8 h-full">
               <div className="grid sm:grid-cols-2 gap-6">
                 <Card className="border-none shadow-md bg-white">
                   <CardContent className="p-6 flex flex-col items-center text-center">
@@ -114,19 +115,19 @@ const Contact = () => {
                 </Card>
               </div>
 
-              <Card className="border-none shadow-md overflow-hidden bg-white">
-                <CardContent className="p-0">
-                  <div className="p-6 pb-0">
+              <Card className="border-none shadow-md overflow-hidden bg-white flex-1 flex flex-col">
+                <CardContent className="p-0 flex flex-col flex-1">
+                  <div className="p-6 pb-4">
                     <h3 className="font-bold text-lg flex items-center gap-2 mb-4">
                       <MapPin className="w-5 h-5 text-primary" />
                       Visit Us
                     </h3>
                     <p className="text-slate-600 mb-4">737 Birdwood Ct, San Ramon, CA 94582</p>
                     <a
-                      href="https://www.google.com/maps/dir/?api=1&destination=Aama+Day+Care+Center,+San+Ramon,+CA+94582"
+                      href={directionsUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block mb-4"
+                      className="inline-block"
                     >
                       <Button variant="outline" className="gap-2 font-bold border-primary text-primary hover:bg-primary/5">
                         <MapPin className="w-4 h-4" />
@@ -134,12 +135,13 @@ const Contact = () => {
                       </Button>
                     </a>
                   </div>
-                  <div className="h-64 w-full bg-slate-100">
+                  <div className="flex-1 min-h-[280px] w-full bg-slate-100">
                     <iframe
                       title="Map"
                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3154.086009569338!2d-121.90513408820796!3d37.76458141262973!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f9166d5630e35%3A0x812bc0d68c63f10f!2sAama%20Day%20Care%20Center!5e0!3m2!1sen!2sus!4v1782077771144!5m2!1sen!2sus"
                       width="100%"
                       height="100%"
+                      className="min-h-[280px]"
                       style={{ border: 0 }}
                       allowFullScreen
                       loading="lazy"
@@ -150,18 +152,18 @@ const Contact = () => {
             </div>
 
             {/* Right: Inquiry Form */}
-            <div className="bg-white p-8 rounded-3xl shadow-xl border border-slate-100 relative overflow-hidden">
+            <div className="bg-white p-8 rounded-3xl shadow-xl border border-slate-100 relative overflow-hidden h-full flex flex-col">
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16"></div>
 
               <h3 className="text-2xl font-black text-slate-900 mb-2">Send an Inquiry</h3>
-              <p className="text-slate-500 mb-8">Fill out the form below and we'll get back to you to schedule your visit.</p>
+              <p className="text-slate-500 mb-6">Fill out the form below and we'll get back to you to schedule your visit.</p>
 
-              <form onSubmit={handleFormSubmit} className="space-y-6">
+              <form onSubmit={handleFormSubmit} className="space-y-5 flex-1 flex flex-col">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="name">Full Name</Label>
                     <Input
-                      id="name" name="name" placeholder="Jane Doe" required
+                      id="name" name="name" placeholder="Your full name" required
                       value={formData.name} onChange={handleInputChange}
                       className="bg-slate-50"
                     />
@@ -169,7 +171,7 @@ const Contact = () => {
                   <div className="space-y-2">
                     <Label htmlFor="phone">Phone Number</Label>
                     <Input
-                      id="phone" name="phone" type="tel" placeholder="(555) 000-0000" required
+                      id="phone" name="phone" type="tel" placeholder="Your phone number" required
                       value={formData.phone} onChange={handleInputChange}
                       className="bg-slate-50"
                     />
@@ -180,7 +182,7 @@ const Contact = () => {
                   <div className="space-y-2">
                     <Label htmlFor="email">Email Address</Label>
                     <Input
-                      id="email" name="email" type="email" placeholder="jane@example.com" required
+                      id="email" name="email" type="email" placeholder="your@email.com" required
                       value={formData.email} onChange={handleInputChange}
                       className="bg-slate-50"
                     />
@@ -195,16 +197,16 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-2 flex-1 flex flex-col">
                   <Label htmlFor="message">Message / Questions</Label>
                   <Textarea
                     id="message" name="message" placeholder="Tell us about your childcare needs..."
-                    className="bg-slate-50 min-h-[120px]"
+                    className="bg-slate-50 flex-1 min-h-[100px]"
                     value={formData.message} onChange={handleInputChange}
                   />
                 </div>
 
-                <Button type="submit" size="lg" className="w-full text-lg py-6 bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity">
+                <Button type="submit" size="lg" className="w-full text-lg py-6 mt-auto bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity">
                   <Send className="w-5 h-5 mr-2" />
                   Send Inquiry
                 </Button>
