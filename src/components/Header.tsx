@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/hooks/auth-context';
 import { GoogleLogin, CredentialResponse } from '@react-oauth/google';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, Phone, User as UserIcon } from 'lucide-react';
+import { Menu, X, Phone, MessageCircle, MapPin, User as UserIcon } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { defaultInquirySms, directionsUrl } from '@/lib/contact';
 
 const Header = () => {
   const { user, setUser, logout } = useAuth();
@@ -163,13 +164,35 @@ const Header = () => {
               <span className="hidden lg:inline">Call Now</span>
             </Button>
           </a>
+          <a href={defaultInquirySms}>
+            <Button variant="outline" size="sm" className="gap-2 font-bold">
+              <MessageCircle className="w-4 h-4" />
+              Text
+            </Button>
+          </a>
+          <a href={directionsUrl} target="_blank" rel="noopener noreferrer">
+            <Button variant="outline" size="sm" className="gap-2 font-bold">
+              <MapPin className="w-4 h-4" />
+              Directions
+            </Button>
+          </a>
         </div>
 
         {/* Mobile Menu Toggle */}
-        <div className="md:hidden flex items-center gap-4">
-          <a href="tel:5107783220" className="md:hidden">
+        <div className="md:hidden flex items-center gap-2">
+          <a href="tel:5107783220">
             <div className="p-2 bg-primary text-white rounded-full shadow-lg">
               <Phone className="w-4 h-4" />
+            </div>
+          </a>
+          <a href={defaultInquirySms}>
+            <div className="p-2 bg-primary text-white rounded-full shadow-lg">
+              <MessageCircle className="w-4 h-4" />
+            </div>
+          </a>
+          <a href={directionsUrl} target="_blank" rel="noopener noreferrer">
+            <div className="p-2 bg-primary text-white rounded-full shadow-lg">
+              <MapPin className="w-4 h-4" />
             </div>
           </a>
           <button
