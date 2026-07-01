@@ -9,6 +9,24 @@ import { GoogleLogin } from '@react-oauth/google';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+const CONTACT_EMAIL = 'aamadaycare@gmail.com';
+const DEFAULT_INQUIRY_SUBJECT = 'Daycare Enrollment Inquiry';
+const DEFAULT_INQUIRY_BODY = `Hello,
+
+I am interested in enrolling my child in your daycare and would like more information.
+
+Child's Age: 
+Desired Start Date: 
+Full-Time or Part-Time: 
+Days Needed: Monday to Friday
+
+Please let me know if you have availability and provide information about tuition, your daily schedule, and the enrollment process.
+
+Thank you! I look forward to hearing from you.`;
+
+const defaultInquiryMailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(DEFAULT_INQUIRY_SUBJECT)}&body=${encodeURIComponent(DEFAULT_INQUIRY_BODY)}`;
+const defaultInquirySms = `sms:5107783220?body=${encodeURIComponent(DEFAULT_INQUIRY_BODY)}`;
+
 const Contact = () => {
   const { user, setUser, logout } = useAuth();
   const [showGoogleLogin, setShowGoogleLogin] = useState(false);
@@ -36,7 +54,7 @@ const Contact = () => {
       `Child's Age: ${formData.childAge}\n\n` +
       `Message:\n${formData.message}`
     );
-    window.location.href = `mailto:aamadaycare@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
   };
 
   const handleGoogleSuccess = (credentialResponse: { credential?: string }) => {
@@ -75,7 +93,7 @@ const Contact = () => {
                       <a href="tel:5107783220" className="w-full">
                         <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold">Call Now</Button>
                       </a>
-                      <a href={`sms:5107783220?body=${encodeURIComponent("Hello,\n\nI am interested in enrolling my child in your daycare and would like more information.\n\nChild's Age: \nDesired Start Date: \nFull-Time or Part-Time: \nDays Needed: \n\nPlease let me know if you have availability and provide information about tuition, your daily schedule, and the enrollment process.\n\nThank you! I look forward to hearing from you.")}`} className="w-full">
+                      <a href={defaultInquirySms} className="w-full">
                         <Button variant="outline" className="w-full border-blue-600 text-blue-600 hover:bg-blue-50 font-bold">Text Us</Button>
                       </a>
                     </div>
@@ -89,7 +107,7 @@ const Contact = () => {
                     </div>
                     <h3 className="font-bold text-lg mb-2">Email Us</h3>
                     <p className="text-slate-500 mb-4 text-sm">We'll respond within 24h</p>
-                    <a href="mailto:aamadaycare@gmail.com" className="w-full">
+                    <a href={defaultInquiryMailto} className="w-full">
                       <Button variant="outline" className="w-full border-green-600 text-green-600 hover:bg-green-50 font-bold">Email Me</Button>
                     </a>
                   </CardContent>
