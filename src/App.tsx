@@ -9,6 +9,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import { AuthProvider } from './hooks/auth-context';
 import Schedule from './pages/Schedule';
 import AIChatbot from './components/AIChatbot';
+import PageAnalytics from './components/PageAnalytics';
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter basename="/">
+            <PageAnalytics />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/schedule" element={<Schedule />} />

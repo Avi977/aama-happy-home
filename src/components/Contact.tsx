@@ -8,7 +8,8 @@ import { useAuth } from "@/hooks/auth-context";
 import { GoogleLogin } from '@react-oauth/google';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { CONTACT_EMAIL, defaultInquiryMailto, directionsUrl } from '@/lib/contact';
+import { CONTACT_EMAIL, CONTACT_PHONE, defaultInquiryMailto, directionsUrl } from '@/lib/contact';
+import { trackCta } from '@/lib/analytics';
 
 const Contact = () => {
   const { user, setUser, logout } = useAuth();
@@ -37,6 +38,7 @@ const Contact = () => {
       `Child's Age: ${formData.childAge}\n\n` +
       `Message:\n${formData.message}`
     );
+    trackCta('inquiry_submit', 'contact_form');
     window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
   };
 
@@ -72,7 +74,7 @@ const Contact = () => {
                     </div>
                     <h3 className="font-bold text-lg mb-2">Call Us</h3>
                     <p className="text-slate-500 mb-4 text-sm">Mon-Fri from 7:30am to 6pm</p>
-                    <a href="tel:5107783220" className="w-full">
+                    <a href={`tel:${CONTACT_PHONE}`} className="w-full" onClick={() => trackCta('call', 'contact_card')}>
                       <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold">Call Now</Button>
                     </a>
                   </CardContent>
@@ -85,7 +87,7 @@ const Contact = () => {
                     </div>
                     <h3 className="font-bold text-lg mb-2">Email Us</h3>
                     <p className="text-slate-500 mb-4 text-sm">We'll respond within 24h</p>
-                    <a href={defaultInquiryMailto} className="w-full">
+                    <a href={defaultInquiryMailto} className="w-full" onClick={() => trackCta('email', 'contact_card')}>
                       <Button variant="outline" className="w-full border-green-600 text-green-600 hover:bg-green-50 font-bold">Email Me</Button>
                     </a>
                   </CardContent>
@@ -105,6 +107,7 @@ const Contact = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-block"
+                      onClick={() => trackCta('directions', 'contact_map')}
                     >
                       <Button variant="outline" className="gap-2 font-bold border-primary text-primary hover:bg-primary/5">
                         <MapPin className="w-4 h-4" />

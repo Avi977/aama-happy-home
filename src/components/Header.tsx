@@ -6,6 +6,7 @@ import { Menu, X, Phone, MessageCircle, MapPin, User as UserIcon } from 'lucide-
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { defaultInquirySms, directionsUrl } from '@/lib/contact';
+import { trackCta } from '@/lib/analytics';
 
 const Header = () => {
   const { user, setUser, logout } = useAuth();
@@ -158,19 +159,24 @@ const Header = () => {
               )}
             </>
           )}
-          <a href="tel:5107783220">
+          <a href="tel:5107783220" onClick={() => trackCta('call', 'header_desktop')}>
             <Button variant={isScrolled ? "default" : "secondary"} size="sm" className="gap-2 font-bold shadow-lg">
               <Phone className="w-4 h-4" />
               <span className="hidden lg:inline">Call Now</span>
             </Button>
           </a>
-          <a href={defaultInquirySms}>
+          <a href={defaultInquirySms} onClick={() => trackCta('text', 'header_desktop')}>
             <Button variant="outline" size="sm" className="gap-2 font-bold">
               <MessageCircle className="w-4 h-4" />
               Text
             </Button>
           </a>
-          <a href={directionsUrl} target="_blank" rel="noopener noreferrer">
+          <a
+            href={directionsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackCta('directions', 'header_desktop')}
+          >
             <Button variant="outline" size="sm" className="gap-2 font-bold">
               <MapPin className="w-4 h-4" />
               Directions
@@ -180,17 +186,22 @@ const Header = () => {
 
         {/* Mobile Menu Toggle */}
         <div className="md:hidden flex items-center gap-2">
-          <a href="tel:5107783220">
+          <a href="tel:5107783220" onClick={() => trackCta('call', 'header_mobile')}>
             <div className="p-2 bg-primary text-white rounded-full shadow-lg">
               <Phone className="w-4 h-4" />
             </div>
           </a>
-          <a href={defaultInquirySms}>
+          <a href={defaultInquirySms} onClick={() => trackCta('text', 'header_mobile')}>
             <div className="p-2 bg-primary text-white rounded-full shadow-lg">
               <MessageCircle className="w-4 h-4" />
             </div>
           </a>
-          <a href={directionsUrl} target="_blank" rel="noopener noreferrer">
+          <a
+            href={directionsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackCta('directions', 'header_mobile')}
+          >
             <div className="p-2 bg-primary text-white rounded-full shadow-lg">
               <MapPin className="w-4 h-4" />
             </div>
